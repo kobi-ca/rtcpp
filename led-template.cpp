@@ -3,44 +3,32 @@
 
 namespace rtcpp {
 
-// different arch? no prob
-    template<typename PT = std::uint8_t, typename BVT = std::uint8_t>
+    // different arch? no prob
+    // PT - port type
+    // BVT - bit val type
+    template<typename PT,
+            typename BVT,
+            const PT port,
+            const BVT bval>
     class led final {
     public:
 
-        explicit led(const PT p, const BVT b) : p_{p}, b_{b} {
+        explicit led() {
             // low level access to registers and memory.
-            //*reinterpret_cast<volatile bitval_type*>(&p_) &= static_cast<bitval_type>(~b_);
-            *reinterpret_cast<volatile BVT *>(&p_) &= ~b_;
-            // vs
-//        bitval_type btmp{p};
-//        btmp &= ~b_;
-//        p_ = btmp;
-//
-//        // vs
-//        p_ &= ~b_;
-
-            // more here as needed
+            *reinterpret_cast<volatile BVT *>(port) &= ~bval;
+            *reinterpret_cast<volatile BVT *>(pdir) |= bval;
         }
 
-        void toggle() noexcept {
-            *reinterpret_cast<volatile bitval_type *>(&p_) ^= b_;
-//        // vs
-//        bitval_type btmp{p_};
-//        btmp &= ~b_;
-//        p_ = btmp;
-//
-//        // vs
-//        p_ ^= b_;
+        void toggle() const noexcept {
+            *reinterpret_cast<volatile BVT *>(port) ^= bval;
         }
 
     private:
-        PT p_{};
-        BVT b_{};
+        static constexpr PT pdir = port - 1U;
     };
 }
 int main() {
-    led led{0x25U, 1UL<<2UL};
+    rtcpp::led<uint8_t, uint8_t, 0x25U, 1UL<<2UL> led;
     led.toggle();
     return 0;
 }

@@ -11,28 +11,13 @@ namespace rtcpp {
 
         explicit led(const port_type p, const bitval_type b) : p_{p}, b_{b} {
             // low level access to registers and memory.
-            //*reinterpret_cast<volatile bitval_type*>(&p_) &= static_cast<bitval_type>(~b_);
-            *reinterpret_cast<volatile bitval_type *>(&p_) &= ~b_;
-            // vs
-//        bitval_type btmp{p};
-//        btmp &= ~b_;
-//        p_ = btmp;
-//
-//        // vs
-//        p_ &= ~b_;
-
-            // more here as needed
+            *reinterpret_cast<volatile bitval_type *>(p_) &= ~b_;
+            const port_type  pdir = p_ - 1U;
+            *reinterpret_cast<volatile bitval_type *>(pdir) |= b;
         }
 
-        void toggle() noexcept {
-            *reinterpret_cast<volatile bitval_type *>(&p_) ^= b_;
-//        // vs
-//        bitval_type btmp{p_};
-//        btmp &= ~b_;
-//        p_ = btmp;
-//
-//        // vs
-//        p_ ^= b_;
+        void toggle() const noexcept {
+            *reinterpret_cast<volatile bitval_type *>(p_) ^= b_;
         }
 
     private:
@@ -42,7 +27,7 @@ namespace rtcpp {
 }
 
 int main() {
-    led led{0x25U, 1UL<<2UL};
+    rtcpp::led led{0x25U, 1UL<<2UL};
     led.toggle();
     return 0;
 }
