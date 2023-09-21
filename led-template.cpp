@@ -28,7 +28,7 @@ namespace rtcpp {
     };
 }
 int main() {
-    rtcpp::led<uint8_t, uint8_t, 0x25U, 1UL<<2UL> led;
+    const rtcpp::led<uint8_t, uint8_t, 0x25U, 1UL<<2UL> led;
     led.toggle();
     return 0;
 }
