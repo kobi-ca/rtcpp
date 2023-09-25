@@ -15,3 +15,6 @@ constexpr auto get2x(std::array<int, 3U> arr) {
 struct S {
     static constexpr auto sz = get2x(std::array{1, 2, 3});
 };
+
+// static asserts example
+static_assert(version >=10U, "Version too low!");

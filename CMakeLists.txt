@@ -14,3 +14,12 @@ target_compile_options(simple-class PRIVATE -Wall -Wextra -pedantic -Weffc++)
 
 add_executable(simple-class-as-struct simple-class-as-struct.cpp)
 target_compile_options(simple-class-as-struct PRIVATE -Wall -Wextra -pedantic -Weffc++)
+
+add_executable(basic-stl-algo basic-stl-algo.cpp)
+target_compile_options(basic-stl-algo PRIVATE -Wall -Wextra -pedantic -Weffc++)
+
+add_executable(basic-stl-fill basic-stl-fill.cpp)
+target_compile_options(basic-stl-fill PRIVATE -Wall -Wextra -pedantic -Weffc++)
+
+add_executable(basic-stl-fill-accumulate basic-stl-fill-accumulate.cpp)
+target_compile_options(basic-stl-fill-accumulate PRIVATE -Wall -Wextra -pedantic -Weffc++)
