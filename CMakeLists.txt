@@ -26,3 +26,9 @@ target_compile_options(basic-stl-fill-accumulate PRIVATE -Wall -Wextra -pedantic
 
 add_executable(literals-example literals-example.cpp)
 target_compile_options(literals-example PRIVATE -Wall -Wextra -pedantic -Weffc++)
+
+add_executable(align-example align-example.cpp)
+target_compile_options(align-example PRIVATE -Wall -Wextra -pedantic -Weffc++)
+
+add_executable(span-example span-example.cpp)
+target_compile_options(span-example PRIVATE -Wall -Wextra -pedantic -Weffc++)
