@@ -23,3 +23,6 @@ target_compile_options(basic-stl-fill PRIVATE -Wall -Wextra -pedantic -Weffc++)
 
 add_executable(basic-stl-fill-accumulate basic-stl-fill-accumulate.cpp)
 target_compile_options(basic-stl-fill-accumulate PRIVATE -Wall -Wextra -pedantic -Weffc++)
+
+add_executable(literals-example literals-example.cpp)
+target_compile_options(literals-example PRIVATE -Wall -Wextra -pedantic -Weffc++)
