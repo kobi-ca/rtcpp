@@ -32,3 +32,6 @@ target_compile_options(align-example PRIVATE -Wall -Wextra -pedantic -Weffc++)
 
 add_executable(span-example span-example.cpp)
 target_compile_options(span-example PRIVATE -Wall -Wextra -pedantic -Weffc++)
+
+add_executable(template-integer-sequence-example template-integer-sequence-example.cpp)
+target_compile_options(template-integer-sequence-example PRIVATE -Wall -Wextra -pedantic -Weffc++)

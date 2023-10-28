@@ -33,14 +33,13 @@ constexpr std::uint_least32_t  v32 = UINT32_C(1'123'123'123);
 // Macros in cstdint will be using literal suffix and much more
 // maintainable compared to bare U, L, UL, LL, ULL etc...
 
-// imagine
 #include <cstdint>
 
 // U means unsigned int, non-portable if int is 16, or even 8
 // so unsigned int (U) us not large enough to hold 10M.
 constexpr std::uint32_t num_664999 = 10'006'721U;
 
-// a Better approach - UINT32_C macto which is portable
+// a Better approach - UINT32_C macro which is portable
 constexpr std::uint32_t num664999 = UINT32_C(10'006'721);
 // macro UINT32_C will handle 0...4,294,967,295
 
